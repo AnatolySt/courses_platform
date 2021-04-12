@@ -9,6 +9,8 @@
 #  updated_at  :datetime         not null
 #
 class Course < ApplicationRecord
+  has_many :groups
+
   validates :title, :description, presence: true
   validates :title, uniqueness: true
 end
