@@ -1,0 +1,15 @@
+h1 Courses List
+table
+  thead
+    tr
+      td Title
+      td = link_to 'Starts At', { sort: sort_direction }
+      td Students Count
+  - @courses.each do |course|
+    tr
+      td
+        = link_to course.title, course
+      td
+        = course.closest_start
+      td
+        = course.students_count

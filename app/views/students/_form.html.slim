@@ -1,0 +1,6 @@
+= form_with model: Student, url: students_path, id: 'new-student', local: false do |f|
+  #errors
+  = f.text_field :full_name, placeholder: :full_name
+  = f.text_field :email, placeholder: :email
+  = f.collection_select :group_ids, groups, :id, :title
+  = f.submit 'Submit'

@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: students
+#
+#  id         :integer          not null, primary key
+#  full_name  :string           not null
+#  email      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+class Student < ApplicationRecord
+  has_many :groups_students
+  has_many :groups, through: :groups_students
+
+  validates :full_name, presence: true
+  validates :email, format: { with: /\A[\S.]+@[\S.]+\z/ }, uniqueness: true, presence: true
+end
