@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module CurrentUserConcern
   def self.included(base)
     base.helper_method :current_user, :user_signed_in?
