@@ -15,5 +15,7 @@ class Group < ApplicationRecord
   has_many :groups_students
   has_many :students, through: :groups_students
 
+  accepts_nested_attributes_for :students, allow_destroy: true
+
   validates :title, presence: true
 end

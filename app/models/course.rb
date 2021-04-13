@@ -12,6 +12,8 @@ class Course < ApplicationRecord
   has_many :groups
   has_many :students, through: :groups
 
+  accepts_nested_attributes_for :groups, allow_destroy: true
+
   validates :title, :description, presence: true
   validates :title, uniqueness: true
 
