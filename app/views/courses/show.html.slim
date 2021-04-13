@@ -4,6 +4,7 @@ hr
 h3 Students List
 - @course.groups.find_each do |group|
   strong = group.title
+  p = normalize_datetime(group.starts_at)
   table#students
     tr
       td Full Name

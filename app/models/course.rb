@@ -9,7 +9,7 @@
 #  updated_at  :datetime         not null
 #
 class Course < ApplicationRecord
-  has_many :groups
+  has_many :groups, dependent: :destroy
   has_many :students, through: :groups
 
   accepts_nested_attributes_for :groups, allow_destroy: true

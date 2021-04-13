@@ -10,6 +10,6 @@ table
       td
         = link_to course.title, course
       td
-        = course.closest_start
+        = normalize_datetime(course.closest_start)
       td
         = course.students_count
