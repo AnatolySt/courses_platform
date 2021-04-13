@@ -2,8 +2,9 @@ class CoursesController < ApplicationController
   helper_method :sort_param
 
   def index
-    @courses = Course.joins(:groups).left_outer_joins(groups: [:students]).distinct
-                     .order('groups.starts_at' => sort_param)
+    @courses = Course.select('courses.*, min(groups.starts_at) as closest_start')
+                     .joins(:groups).left_outer_joins(groups: [:students])
+                     .group(:id).distinct.order('closest_start' => sort_param)
   end
 
   def show
