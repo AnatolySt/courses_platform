@@ -12,5 +12,8 @@
 #
 class Group < ApplicationRecord
   belongs_to :course
+  has_many :groups_students
+  has_many :students, through: :groups_students
+
   validates :title, presence: true
 end
