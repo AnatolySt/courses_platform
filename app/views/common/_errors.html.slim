@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  h2 = pluralize(resource.errors.count, "error")
+  | prohibited this train from being saved:
+  ul
+    - resource.errors.full_messages.each do |message|
+      li = message

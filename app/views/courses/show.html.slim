@@ -1,0 +1,17 @@
+h1 = @course.title
+p = @course.description
+hr
+h3 Students List
+- @course.groups.find_each do |group|
+  strong = group.title
+  table#students
+    tr
+      td Full Name
+      td Email
+    - group.students.each do |student|
+      tr
+        td = student.full_name
+        td = student.email
+
+h3 Join course
+= render 'students/form', groups: @course.groups

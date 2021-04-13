@@ -10,7 +10,16 @@
 #
 class Course < ApplicationRecord
   has_many :groups
+  has_many :students, through: :groups
 
   validates :title, :description, presence: true
   validates :title, uniqueness: true
+
+  def closest_start
+    groups.minimum(:starts_at)
+  end
+
+  def students_count
+    students.count
+  end
 end
