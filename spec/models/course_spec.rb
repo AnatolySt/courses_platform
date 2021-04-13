@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Course, type: :model do
   let(:today) { Time.zone.today }
   let(:course) { create :course }
-  let!(:today_group) { create :group, :with_students, course: course, starts_at: today }
-  let!(:incoming_group) { create :group, :with_students, course: course, starts_at: today + 1.week }
+  let!(:today_group) { create :group, course: course, starts_at: today }
+  let!(:incoming_group) { create :group, course: course, starts_at: today + 1.week }
 
   it { should have_many(:groups).dependent(:destroy) }
   it { should have_many(:students).through(:groups) }

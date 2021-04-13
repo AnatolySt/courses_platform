@@ -12,7 +12,7 @@
 #
 class Group < ApplicationRecord
   belongs_to :course
-  has_many :groups_students
+  has_many :groups_students, dependent: :destroy
   has_many :students, through: :groups_students
 
   accepts_nested_attributes_for :students, allow_destroy: true

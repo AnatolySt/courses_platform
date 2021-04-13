@@ -32,7 +32,7 @@ RSpec.describe CoursesController, type: :controller do
 
   describe 'GET #show' do
     let(:course) { create :course }
-    let!(:group) { create :group, :with_students, course: course }
+    let!(:group) { create :group, course: course }
     before { get :show, params: { id: course.id } }
 
     it 'has successful response' do
