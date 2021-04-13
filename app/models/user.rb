@@ -10,6 +10,8 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_secure_password validations: false
+
   validates :email, :password, presence: true
   validates :email, format: { with: /\A[\S.]+@[\S.]+\z/ }, uniqueness: true
 
@@ -17,9 +19,10 @@ class User < ApplicationRecord
 
   def generate_token(column)
     # генерируем токен, пока он не станет уникальным
-    loop do
-      token = SecureRandom.hex
-      break token unless self.class.exists?(column.to_s => token)
-    end
+    self.auth_token =
+      loop do
+        token = SecureRandom.hex
+        break token unless self.class.exists?(column.to_s => token)
+      end
   end
 end
