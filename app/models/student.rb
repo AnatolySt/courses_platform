@@ -12,6 +12,6 @@ class Student < ApplicationRecord
   has_many :groups_students
   has_many :groups, through: :groups_students
 
-  validates :full_name, presence: true
-  validates :email, format: { with: /\A[\S.]+@[\S.]+\z/ }, uniqueness: true, presence: true
+  validates :email, :full_name, presence: true
+  validates :email, format: { with: /\A[\S.]+@[\S.]+\z/ }, uniqueness: true
 end
